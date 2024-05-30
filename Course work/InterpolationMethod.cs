@@ -1,20 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ClassLibraryCourseWork
+namespace Interface_Course_work
 {
-    public class InterpolationMethod
+    public class InterpolationMethod : SearchMethod
     {
         public List<double> Passed
-        {
-            get;
-            private set;
-        }
-        public int Comp
         {
             get;
             private set;
@@ -23,7 +17,14 @@ namespace ClassLibraryCourseWork
         {
             Passed = new List<double>();
         }
-        public int InterpolationSearch(double[] arr, double key)
+        //number of comparisons
+        public int Comp
+        {
+            get;
+            private set;
+        }
+        //realization of interpolation search
+        public override int Search(double[] arr, double key)
         {
             Comp = 0;
             Passed.Clear();
@@ -32,7 +33,6 @@ namespace ClassLibraryCourseWork
             int high = arr.Length - 1;
             while (low <= high && key >= arr[low] && key <= arr[high])
             {
-                int mid = low + (int)((high - low) * (key - arr[low]) / (arr[high] - arr[low]));
                 if (low == high)
                 {
                     Comp++;
@@ -41,20 +41,22 @@ namespace ClassLibraryCourseWork
                         return low;
                     return -1;
                 }
+                int pos = low + (int)((high - low) * (key - arr[low]) / (arr[high] - arr[low]));
+                
                 Comp++;
-                Passed.Add(arr[mid]);
-                if (arr[mid] == key)
+                Passed.Add(arr[pos]);
+                if (arr[pos] == key)
                 {
-                    return mid;
+                    return pos;
                 }
-                if (arr[mid] < key)
+                if (arr[pos] < key)
                 {
-                    low = mid + 1;
+                    low = pos + 1;
                 }
                 else
-                    high = mid - 1;
+                    high = pos - 1;
             }
-            return -1; 
+            return -1;
         }
     }
 }

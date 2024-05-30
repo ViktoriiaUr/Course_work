@@ -1,29 +1,30 @@
-using ClassLibraryCourseWork;
 using System.Drawing;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace Interface_Course_work
 {
+    //main window of program, where user can enter dimension, limits, searching element and method
     public partial class GenerationForm : Form
     {
-        private GenerateArray generateArray;
+        private ArrayGeneration arrayGeneration;
+        private DisplayingArray displayingArray;
         private LinearMethod linearMethod;
         private FibonacciMethod fibonacciMethod;
         private InterpolationMethod interpolationMethod;
         private HashMethod hashMethod;
-        public const int DimensionMin = 10;
-        public const int DimensionMax = 10000;
-        public const int LimitMax = 10000;
+        private const int DimensionMin = 10;
+        private const int DimensionMax = 10000;
+        private const int LimitMax = 10000;
 
         public GenerationForm()
         {
             InitializeComponent();
-            generateArray = new GenerateArray();
+            arrayGeneration = new ArrayGeneration();
+            displayingArray = new DisplayingArray(displayArrayBox);
             linearMethod = new LinearMethod();
             fibonacciMethod = new FibonacciMethod();
             interpolationMethod = new InterpolationMethod();
             hashMethod = new HashMethod();
-
 
             displayArrayBox.Visible = false;
             generatedArrayLabel.Visible = false;
@@ -34,6 +35,8 @@ namespace Interface_Course_work
             ChooseMethodBox.Visible = false;
         }
 
+        //when GenerationButton is clicked, array is generating and displaying in displayArrayBox
+        //validation of entered data
         private void GenerationButton_Click(object sender, EventArgs e)
         {
             if (IsValidInput())
@@ -69,29 +72,29 @@ namespace Interface_Course_work
                 }
                 else if (lowerLimit < upperLimit && lowerLimit >= -LimitMax && upperLimit <= LimitMax && dimension <= DimensionMax && dimension >= DimensionMin)
                 {
-                    generateArray.EmptyArray(dimension);
-                    generateArray.GenerateOrderedArray(dimension, lowerLimit, upperLimit);
+                    arrayGeneration.EmptyArray(dimension);
+                    double[] array = arrayGeneration.GenerateOrderedArray(dimension, lowerLimit, upperLimit);
                     displayArrayBox.Clear();
                     ElementBox.Clear();
                     ChooseMethodBox.SelectedIndex = -1;
-                    DisplayArray();
+                    displayingArray.Display(array);
                     displayArrayBox.Visible = true;
                     generatedArrayLabel.Visible = true;
                     ElementToFindLabel.Visible = true;
                     ElementBox.Visible = true;
                     FindButton.Visible = true;
                     methodLabel.Visible = true;
-                    ChooseMethodBox.Visible = true;
-                    
+                    ChooseMethodBox.Visible = true;   
                 }
             }
         }
 
+        //checks whether all boxes are filled correctly
         private bool IsValidInput()
         {
             bool error = false;
-            if (!(double.TryParse(dimensionBox.Text, out double dimensionDouble) ||
-                dimensionDouble != (int)dimensionDouble))
+            //checking for dimensionBox
+            if (!double.TryParse(dimensionBox.Text, out double dimensionDouble) || dimensionDouble != (int)dimensionDouble)
             {
                 if (string.IsNullOrWhiteSpace(dimensionBox.Text))
                 {
@@ -101,11 +104,12 @@ namespace Interface_Course_work
                 else
                 {
                     dimensionBox.BackColor = Color.Red;
-                    MessageBox.Show("Розмірність введена некоректно. Вкажіть ціле число (наприклад, 1000)");
+                    MessageBox.Show("Розмірність введена некоректно. Вкажіть ціле число (наприклад, 1000).");
                 }
                 error = true;
             }
 
+            //checking for lowerLimitBox
             if (!double.TryParse(lowerLimitBox.Text, out _) || !IsValidDouble(lowerLimitBox.Text))
             {
                 lowerLimitBox.BackColor = Color.Red;
@@ -124,6 +128,7 @@ namespace Interface_Course_work
                 error = true;
             }
 
+            //checking for upperLimitBox
             if (!double.TryParse(upperLimitBox.Text, out _) || !IsValidDouble(upperLimitBox.Text))
             {
                 upperLimitBox.BackColor = Color.Red;
@@ -144,40 +149,27 @@ namespace Interface_Course_work
             return !error;
         }
 
+        //checks that maximum number of characters after the comma (not more than 16)
         private bool IsValidDouble(string input)
         {
-            if (input.Length > 20) // Максимальна довжина рядка
+            if (input.Length > 20)
             {
                 return false;
             }
             string[] parts = input.Split(',');
-            if (parts.Length == 2 && parts[1].Length > 16) // Максимальна кількість десяткових знаків
+            if (parts.Length == 2 && parts[1].Length > 16) 
             {
                 return false;
             }
             return true;
         }
 
-        private void DisplayArray()
-        {
-            double[] array = generateArray.GetArray();
-           // displayArrayBox.Clear();
-            
-
-            for (int i = 0; i < array.Length; i++)
-            {
-                displayArrayBox.AppendText(array[i].ToString());
-
-                if (i < array.Length - 1)
-                {
-                    displayArrayBox.AppendText(";  ");
-                }
-            }
-        }
-
+        //when FindButton is clicked, the program searches element depending on the chosen method
+        //methods returns index of element, number of comparisons and the list of elements which were compared
         private void FindButton_Click(object sender, EventArgs e)
         {
             ElementBox.BackColor = Color.White;
+            //checking for ElementBox
             if (!double.TryParse(ElementBox.Text, out double searchKey) || !IsValidDouble(ElementBox.Text))
             {
                 ElementBox.BackColor = Color.Red;
@@ -198,30 +190,30 @@ namespace Interface_Course_work
             else
             {
                 int index = -1;
-                double[] array = generateArray.GetArray();
+                double[] array = arrayGeneration.GetArray();
                 List<double> passedElem = [];
                 int comparisons = 0;
                 string selectedMethod = ChooseMethodBox.SelectedItem.ToString();
                 switch (selectedMethod)
                 {
                     case "послідовний метод":
-                        index = linearMethod.LinearSearch(array, searchKey);
+                        index = linearMethod.Search(array, searchKey);
                         passedElem = linearMethod.Passed;
                         comparisons = linearMethod.Comp;
                         break;
                     case "метод Фібоначчі":
-                        index = fibonacciMethod.FibonacciSearch(array, searchKey);
+                        index = fibonacciMethod.Search(array, searchKey);
                         passedElem = fibonacciMethod.Passed;
                         comparisons = fibonacciMethod.Comp;
                         break;
                     case "інтерполяційний метод":
-                        index = interpolationMethod.InterpolationSearch(array, searchKey);
+                        index = interpolationMethod.Search(array, searchKey);
                         passedElem = interpolationMethod.Passed;
                         comparisons = interpolationMethod.Comp;
                         break;
                     case "метод хеш-функції":
                         hashMethod.BuildHashTable(array);
-                        index = hashMethod.HashSearch(array, searchKey);
+                        index = hashMethod.Search(array, searchKey);
                         passedElem = hashMethod.Passed;
                         comparisons = hashMethod.Comp;
                         break;

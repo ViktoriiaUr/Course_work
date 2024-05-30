@@ -4,19 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Security.Cryptography;
-using System.Collections;
 
-namespace ClassLibraryCourseWork
+namespace Interface_Course_work
 {
-    public class HashMethod
+    public class HashMethod : SearchMethod
     {
         private Dictionary<string, int> hashTable;
         public List<double> Passed
-        {
-            get;
-            private set;
-        }
-        public int Comp
         {
             get;
             private set;
@@ -26,7 +20,13 @@ namespace ClassLibraryCourseWork
             hashTable = new Dictionary<string, int>();
             Passed = new List<double>();
         }
-
+        //number of comparisons
+        public int Comp
+        {
+            get;
+            private set;
+        }
+        //filling of the hash table
         public void BuildHashTable(double[] arr)
         {
             hashTable.Clear();
@@ -37,14 +37,15 @@ namespace ClassLibraryCourseWork
                 {
                     hashTable.Add(hash, i);
                 }
-            }           
+            }
         }
-
-        public int HashSearch(double[] arr, double key)
+        //realization of hash search
+        public override int Search(double[] arr, double key)
         {
             Comp = 0;
             Passed.Clear();
             string hash = SHA256Hash(key.ToString());
+
             if (hashTable.TryGetValue(hash, out int index))
             {
                 Comp++;
@@ -57,6 +58,7 @@ namespace ClassLibraryCourseWork
             return -1;
         }
 
+        //computing of hash meaning
         private string SHA256Hash(string rawData)
         {
             using (SHA256 sha256 = SHA256.Create())

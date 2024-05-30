@@ -1,0 +1,95 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Interface_Course_work.Animation" Collapsed="true">
+    <Position X="12.5" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Animation.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Interface_Course_work.AnimationForm" Collapsed="true">
+    <Position X="12" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AJAAAAAAACJAAABAAIiEAIACAAAAAAAAAABAAAABAAA=</HashCode>
+      <FileName>AnimationForm.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Interface_Course_work.ArrayGeneration" Collapsed="true">
+    <Position X="8.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAQAAAAAAgAAIAAAAAAQAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ArrayGeneration.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Interface_Course_work.DisplayingArray" Collapsed="true">
+    <Position X="8.5" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAIAAAAAA=</HashCode>
+      <FileName>DisplayArray.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Interface_Course_work.FibonacciMethod" Collapsed="true">
+    <Position X="0.5" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAgAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAABgAAA=</HashCode>
+      <FileName>FibonacciMethod.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Interface_Course_work.GenerationForm" Collapsed="true">
+    <Position X="6.5" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AACCEJAIAK4AGAAAAACAAQASSAAQAYCAAAQAIAIQAgI=</HashCode>
+      <FileName>GenerationForm.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Interface_Course_work.HashMethod" Collapsed="true">
+    <Position X="0.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAggAAAAAACIAAAAAAAAAABAAAAAAAAAAAAAABgAAA=</HashCode>
+      <FileName>HashMethod.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Interface_Course_work.InterpolationMethod" Collapsed="true">
+    <Position X="0.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAgAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAABgAAA=</HashCode>
+      <FileName>InterpolationMethod.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Interface_Course_work.LinearMethod" Collapsed="true">
+    <Position X="0.75" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAgAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAgAAA=</HashCode>
+      <FileName>LinearMethod.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Interface_Course_work.MatrixDisplayingArray" Collapsed="true">
+    <Position X="8" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>MatrixDisplayingArray.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Interface_Course_work.ResultsForm" Collapsed="true">
+    <Position X="6.25" Y="1" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AJAAAQAAACAAAABAIAiEAAACEAACEAAAAAABAABBQIA=</HashCode>
+      <FileName>ResultsForm.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Interface_Course_work.SearchMethod" Collapsed="true">
+    <Position X="2.5" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAA=</HashCode>
+      <FileName>SearchMethod.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Interface_Course_work.WorkWithFile" Collapsed="true">
+    <Position X="4.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>WorkWithFile.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

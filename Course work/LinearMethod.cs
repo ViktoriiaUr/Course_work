@@ -3,12 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using static System.Runtime.InteropServices.JavaScript.JSType;
 
-namespace ClassLibraryCourseWork
+namespace Interface_Course_work
 {
-    public class LinearMethod
+    public class LinearMethod : SearchMethod
     {
+        
+        //thу list will consist of the elements that were compared
         public List<double> Passed
         {
             get;
@@ -16,16 +17,16 @@ namespace ClassLibraryCourseWork
         }
         public int Comp
         {
-            get; 
+            get;
             private set;
         }
         public LinearMethod()
         {
             Passed = new List<double>();
-        }
+        } 
 
         //realization of linear method 
-        public int LinearSearch(double[] arr, double key)
+        public override int Search(double[] arr, double key)
         {
             Comp = 0;
             Passed.Clear();
@@ -40,5 +41,6 @@ namespace ClassLibraryCourseWork
             }
             return -1;
         }
+        
     }
 }

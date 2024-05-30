@@ -10,7 +10,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\ClassLibraryCourseWork\ClassLibraryCourseWork.csproj" />
+    
   </ItemGroup>
 
 </Project>

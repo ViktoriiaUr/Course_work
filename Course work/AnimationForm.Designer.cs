@@ -33,9 +33,9 @@
             DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
             animationNameLabel = new Label();
             ArrayDataGrid = new DataGridView();
-            NoElementLabel = new Label();
             SearchedElementBox = new TextBox();
             GoBackButton = new Button();
+            ResultBox = new TextBox();
             ((System.ComponentModel.ISupportInitialize)ArrayDataGrid).BeginInit();
             SuspendLayout();
             // 
@@ -86,17 +86,6 @@
             ArrayDataGrid.Size = new Size(683, 293);
             ArrayDataGrid.TabIndex = 1;
             // 
-            // NoElementLabel
-            // 
-            NoElementLabel.AutoSize = true;
-            NoElementLabel.Font = new Font("Comic Sans MS", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 204);
-            NoElementLabel.ForeColor = Color.MediumBlue;
-            NoElementLabel.Location = new Point(194, 409);
-            NoElementLabel.Name = "NoElementLabel";
-            NoElementLabel.Size = new Size(375, 32);
-            NoElementLabel.TabIndex = 3;
-            NoElementLabel.Text = "Вказаний елемент не знайдено";
-            // 
             // SearchedElementBox
             // 
             SearchedElementBox.BackColor = SystemColors.Menu;
@@ -119,15 +108,27 @@
             GoBackButton.UseVisualStyleBackColor = true;
             GoBackButton.Click += GoBackButton_Click;
             // 
+            // ResultBox
+            // 
+            ResultBox.BackColor = SystemColors.Menu;
+            ResultBox.BorderStyle = BorderStyle.None;
+            ResultBox.Font = new Font("Comic Sans MS", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 204);
+            ResultBox.ForeColor = Color.MediumBlue;
+            ResultBox.Location = new Point(194, 398);
+            ResultBox.Name = "ResultBox";
+            ResultBox.Size = new Size(387, 33);
+            ResultBox.TabIndex = 6;
+            ResultBox.TextAlign = HorizontalAlignment.Center;
+            // 
             // AnimationForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.Menu;
             ClientSize = new Size(772, 450);
+            Controls.Add(ResultBox);
             Controls.Add(GoBackButton);
             Controls.Add(SearchedElementBox);
-            Controls.Add(NoElementLabel);
             Controls.Add(ArrayDataGrid);
             Controls.Add(animationNameLabel);
             Name = "AnimationForm";
@@ -141,8 +142,8 @@
 
         private Label animationNameLabel;
         private DataGridView ArrayDataGrid;
-        private Label NoElementLabel;
         private TextBox SearchedElementBox;
         private Button GoBackButton;
+        private TextBox ResultBox;
     }
 }

@@ -4,15 +4,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ClassLibraryCourseWork
+namespace Interface_Course_work
 {
-    public class FibonacciMethod
+    public class FibonacciMethod : SearchMethod
     {
         public List<double> Passed
         {
             get;
             private set;
         }
+        //number of comparisons
         public int Comp
         {
             get;
@@ -22,8 +23,9 @@ namespace ClassLibraryCourseWork
         {
             Passed = new List<double>();
         }
-    
-        public int FibonacciSearch(double[] arr, double key)
+
+        //realization of fibonacci search
+        public override int Search(double[] arr, double key)
         {
             Comp = 0;
             Passed.Clear();
@@ -41,8 +43,6 @@ namespace ClassLibraryCourseWork
             }
 
             int offset = -1;
-           
-
             while (fibM2 >= 0)
             {
                 int i = Math.Min(offset + fibM2, n - 1);
@@ -71,7 +71,7 @@ namespace ClassLibraryCourseWork
                 Comp++;
                 Passed.Add(arr[offset + 1]);
             }
-            if (fibM1 == 1 && arr[offset + 1] == key) 
+            if (fibM1 == 1 && arr[offset + 1] == key)
             {
                 return offset + 1;
             }
